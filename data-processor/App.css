@@ -1,0 +1,49 @@
+body {
+    background-color: black;
+}
+
+.App {
+    position: relative;
+    background-color: black;
+    min-height: 100vh;
+    min-width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.Navigator {
+    position: relative;
+    background-color: grey;
+    min-height: 5vh;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5;
+    padding-right: 5;
+}
+
+.import-layout-button {
+    display: block;
+    position: static;
+    background-color:  grey;
+    color: black;
+}
+
+.default-fields {
+    display: block;
+    position: static;
+    background-color: grey;
+    color: black;
+}
+
+.add-field-button {
+    display: block;
+    position: static;
+    background-color: grey;
+    color: black;
+}
