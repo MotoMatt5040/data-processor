@@ -3,9 +3,10 @@ import pandas as pd
 import os
 from tkinter import filedialog
 import tkinter as tk
+import json
+
 
 app = Flask(__name__)
-
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -20,6 +21,7 @@ def data():
     #     data = pd.read_excel(file, index_col=None)
     #     print(data)
     # return render_template('data.html', data=data)
+
     root = tk.Tk()
     root.withdraw()
     root.overrideredirect(True)
@@ -27,9 +29,22 @@ def data():
     root.deiconify()
     root.lift()
     root.focus_force()
+
     filepath = filedialog.askopenfilename(parent=root, initialdir='C:/Users/', filetypes=(("excel", "*.xlsx"), ("csv", "*.csv"), ("all files", "*.*")))
     data = pd.read_excel(filepath, index_col=None)
+
     root.destroy()
+
+    with open("data.json", "w") as outfile:
+        json.dump(data.to_json(), outfile)
+
+    with open('data.json', 'r') as openfile:
+        # Reading from json file
+        json_object = json.load(openfile)
+
+    print(json_object)
+    print(type(json_object))
+
     return render_template('data.html', data=data)
 
 
