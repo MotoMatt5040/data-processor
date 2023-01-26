@@ -36,11 +36,22 @@ def data():
     root.destroy()
 
     with open("data.json", "w") as outfile:
-        json.dump(data.to_json(), outfile)
+        json.dump(data.to_json(orient='records')[1:-1].replace('},{', '} {'), outfile)
 
     with open('data.json', 'r') as openfile:
         # Reading from json file
         json_object = json.load(openfile)
+    
+
+    with open('data.txt', 'w') as outfile:
+        outfile.write(data.to_json(orient='records')[1:-1].replace('},{', '} {'))
+
+    with open('data.txt', 'r') as openfile:
+        # Reading from json file
+        for line in openfile:
+            print(line)
+            
+
 
     print(json_object)
     print(type(json_object))
